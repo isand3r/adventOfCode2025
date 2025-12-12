@@ -51,28 +51,21 @@ function main() {
       connections++
     }
     if(aCircuits.length > 0 && bCircuits.length > 0) {
-      console.log('need to merge')
-      console.log({aCircuits, bCircuits})
       connections++
       circuits = [...xor, merge(aCircuits[0], bCircuits[0])]
     }
     if(aCircuits.length > 0 && bCircuits.length === 0) {
-      console.log('add b to a')
       aCircuits[0].push(pair.b)
       circuits = [...xor, ...aCircuits]
       connections++
     }
     if(aCircuits.length === 0 && bCircuits.length > 0) {
-      console.log('add a to b')
       bCircuits[0].push(pair.a)
       circuits = [...xor, ...bCircuits]
       connections++
     }
-    console.log({pair, circuits})
-    console.log('========')
   }
   circuits.sort((a,b) => b.length - a.length)
-  console.log({circuits})
   const [a,b,c] = circuits
   const ans = a.length * b.length * c.length
   console.log({ans})
